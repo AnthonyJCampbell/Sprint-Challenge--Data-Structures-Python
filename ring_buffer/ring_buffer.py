@@ -16,15 +16,6 @@ class RingBuffer:
         if self.current > len(self.storage) - 1:
             self.current = 0
 
-
-
-        # if self.current == self.capacity:
-        #     self.storage.pop()
-        #     self.storage.append(item)
-        # else:
-        #     self.storage[self.current] = item
-        #     self.current += 1
-
     #  The `get` method returns all of the elements in the buffer in a list in their given order. 
     # It should not return any `None` values in the list even if they are present in the ring buffer.
     def get(self):
