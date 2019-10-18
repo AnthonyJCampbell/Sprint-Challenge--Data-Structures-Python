@@ -43,30 +43,56 @@ class LinkedList:
         return False
 
     def reverse_list(self):
-        # TO BE COMPLETED
+        # if self.head is None or self.next_node is None, we can simply return
+        if self.head is None or self.head.next_node is None:
+            return
 
-        current = self.head
-        # Loop over the length of the LinkedList
-        # Maybe a while loop, checking if self.head.next_node is not None
-        while True:
-            # Call add_to_head on every value in the LinkedList
-            print
+        list_to_do = self.head.next_node
+        
+        reversed_list = self.head
+        reversed_list.next_node = None
 
-            next = current.next_node
+        while list_to_do is not None:
+            temp = list_to_do
+            list_to_do = list_to_do.next_node
 
-            # Store self.head
-            stored_head = self.head
+            temp.next_node = reversed_list
+            reversed_list = temp
 
-            # Run add_to_head
-            self.add_to_head(current)
 
-            # Do self.head.next_node = stored_head
-            self.head.next_node = stored_head
+
+
+
+
+
+
+
+
+
+
+
+        # current = self.head
+        # # Loop over the length of the LinkedList
+        # # Maybe a while loop, checking if self.head.next_node is not None
+        # while True:
+        #     # Call add_to_head on every value in the LinkedList
+        #     print
+
+        #     next = current.next_node
+
+        #     # Store self.head
+        #     stored_head = self.head
+
+        #     # Run add_to_head
+        #     self.add_to_head(current)
+
+        #     # Do self.head.next_node = stored_head
+        #     self.head.next_node = stored_head
             
-            if next.next_node is None:
-                break       
-            else:     
-                current = next
+        #     if next.next_node is None:
+        #         break       
+        #     else:     
+        #         current = next
 
             
 
@@ -77,4 +103,4 @@ mylist.add_to_head("3")
 mylist.add_to_head("2")
 mylist.add_to_head("4")
 mylist.reverse_list()
-print(vars(mylist.head.value))
+print(mylist.head.value)
