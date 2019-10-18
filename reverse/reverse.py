@@ -47,60 +47,26 @@ class LinkedList:
         if self.head is None or self.head.next_node is None:
             return
 
-        list_to_do = self.head.next_node
-        
-        reversed_list = self.head
-        reversed_list.next_node = None
+        current = self.head
+        next = current.next_node
 
-        while list_to_do is not None:
-            temp = list_to_do
-            list_to_do = list_to_do.next_node
+        # Loop over the list as long as there's a value to the right
+        while next:
+            # 'Remove' the value from the right
+            # print(f"current node has a next_node of {current.next_node.value}. Changing it into {next.next_node.value}")
+            current.next_node = next.next_node
 
-            temp.next_node = reversed_list
-            reversed_list = temp
+            # The current value moves up a position
+            # print(f"next.next_node (what used to be {next.next_node.value}) now becomes {self.head.value}")
+            next.next_node = self.head
 
+            # We're placing the value at head.next_node at head
+            # print(f"We're now setting self.head (what used to be {self.head.value}) to {next.value}")
+            self.head = next
 
+            # Make next into current.next_node to reloop
+            # print(f"Now, we're making sure next (what used to be {next.value} becomes current.next_node ({current.next_node.value}))")
+            next = current.next_node
 
-
-
-
-
-
-
-
-
-
-
-        # current = self.head
-        # # Loop over the length of the LinkedList
-        # # Maybe a while loop, checking if self.head.next_node is not None
-        # while True:
-        #     # Call add_to_head on every value in the LinkedList
-        #     print
-
-        #     next = current.next_node
-
-        #     # Store self.head
-        #     stored_head = self.head
-
-        #     # Run add_to_head
-        #     self.add_to_head(current)
-
-        #     # Do self.head.next_node = stored_head
-        #     self.head.next_node = stored_head
-            
-        #     if next.next_node is None:
-        #         break       
-        #     else:     
-        #         current = next
-
-            
-
-
-mylist = LinkedList()
-mylist.add_to_head("1")
-mylist.add_to_head("3")
-mylist.add_to_head("2")
-mylist.add_to_head("4")
-mylist.reverse_list()
-print(mylist.head.value)
+            # print("\n")
+        return
